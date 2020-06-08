@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+# Should be able to remove use of autotools by just copying images to $1
+./autogen.sh
+
+./configure \
+    --prefix=/usr
+
+make
+make DESTDIR="$1" install
