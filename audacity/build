@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+./configure \
+    --prefix="/usr" \
+    --with-libsndfile="system" \
+    --with-ffmpeg="system" \
+    --with-expat="system" \
+    --with-lame="system" \
+    --without-lv2 \
+    --disable-sse
+
+make
+make DESTDIR="$1" install
