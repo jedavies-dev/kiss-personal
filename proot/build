@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+make -C src loader.elf build.h
+make -C src proot care
+
+install -Dm755 src/proot "$1/usr/bin/proot"
+install -Dm755 src/care "$1/usr/bin/care"
