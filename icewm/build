@@ -1,9 +1,13 @@
 #!/bin/sh -e
 
+export MOREFLAGS="-logg -lopus -lvorbis -lvorbisenc -lFLAC"
 export DESTDIR="$1"
 
 cmake -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_NLS="off" \
+    -DCMAKE_C_FLAGS="$CFLAGS $MOREFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS $MOREFLAGS"
 
 cmake --build   build
 cmake --install build

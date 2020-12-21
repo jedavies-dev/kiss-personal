@@ -1,13 +1,13 @@
 #!/bin/sh -e
 
-./configure \
-    --prefix="/usr" \
-    --with-libsndfile="system" \
-    --with-ffmpeg="system" \
-    --with-expat="system" \
-    --with-lame="system" \
-    --without-lv2 \
-    --disable-sse
+export MOREFLAGS="-lopus"
+export DESTDIR="$1"
 
-make
-make DESTDIR="$1" install
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_NLS="off" \
+    -DCMAKE_C_FLAGS="$CFLAGS $MOREFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS $MOREFLAGS"
+
+cmake --build   build
+cmake --install build

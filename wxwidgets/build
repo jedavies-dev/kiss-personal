@@ -1,8 +1,15 @@
 #!/bin/sh -e
 
+case $(cc -dumpmachine) in
+   powerpc64le-linux-musl) ARCH=powerpc64le-musl-linux;;
+   *) ARCH=$(cc -dumpmachine);;
+esac
+
+
 ./configure \
     --prefix=/usr \
-    --build=powerpc64le-musl-linux
+    --build=$ARCH \
+    --enable-no_deps
 
 make
 make DESTDIR="$1" install

@@ -1,3 +1,4 @@
+alsa-lib
 bzip2
 expat
 fontconfig
@@ -5,6 +6,7 @@ freetype-harfbuzz
 fribidi
 gdk-pixbuf
 glib
+imlib2
 libICE
 libSM
 libX11
@@ -17,9 +19,11 @@ libXft
 libXinerama
 libXrandr
 libXrender
+libflac
 libjpeg-turbo
+libogg
 libpng
+libvorbis
 libxcb
 libxpm
-zlib
-
+opus
